@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specialized Business Chatbot</title>
+
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!--
+    STUDENT CUSTOMIZATION SECTION: PAGE STRUCTURE
+    Students: Modify the header and layout to match your business!
+    -->
+
+    <div class="header">
+        <!-- Students: Change this emoji and text for your business! -->
+        <div class="business-logo" id="businessLogo">🐦</div>
+        <h1 id="businessName">Loading...</h1>
+        <p id="businessDescription">Your AI-powered business assistant</p>
+    </div>
+
+    <div class="container">
+        <div class="chat-container">
+            <div class="chat-messages" id="chatMessages">
+                <!-- Welcome message will be added here by JavaScript -->
+            </div>
+
+            <!--
+            STUDENT CUSTOMIZATION: QUICK RESPONSE BUTTONS
+            Students: Add buttons for common questions customers might ask
+            -->
+            <div class="quick-buttons">
+                <button class="quick-button" onclick="sendQuickMessage('What products do you have?')">
+                    Products 🛍️
+                </button>
+                <button class="quick-button" onclick="sendQuickMessage('What are your prices?')">
+                    Pricing 💰
+                </button>
+                <button class="quick-button" onclick="sendQuickMessage('How can I contact you?')">
+                    Contact 📞
+                </button>
+                <button class="quick-button" onclick="sendQuickMessage('Tell me about your business')">
+                    About Us ℹ️
+                </button>
+            </div>
+
+            <div class="typing-indicator" id="typingIndicator">
+                <span class="typing-dots">
+                    <span>.</span><span>.</span><span>.</span>
+                </span> AI is typing...
+            </div>
+
+            <div class="input-area">
+                <div class="input-container">
+                    <input
+                        type="text"
+                        id="messageInput"
+                        placeholder="Type your message here..."
+                        maxlength="500"
+                    >
+                    <button id="sendButton" onclick="sendMessage()">Send 🚀</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link to external JavaScript file -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
