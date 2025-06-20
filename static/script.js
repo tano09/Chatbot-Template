@@ -95,7 +95,9 @@ function addWelcomeMessage() {
 // CORE CHAT FUNCTIONS
 // =================================================================
 
-// Send message to backend and display response
+// Add a flag to track message processing
+let isMessageBeingProcessed = false;
+
 async function sendMessage() {
     const input = document.getElementById('messageInput');
     const message = input.value.trim();
@@ -105,6 +107,15 @@ async function sendMessage() {
         highlightEmptyInput();
         return;
     }
+
+    // Prevent sending another message while one is being processed
+    if (isMessageBeingProcessed) {
+        console.log("⚠️ Message already being processed. Please wait.");
+        return;
+    }
+
+    // Set the flag to true
+    isMessageBeingProcessed = true;
 
     // Disable send button and show user message
     setSendButtonState(false);
@@ -147,6 +158,9 @@ async function sendMessage() {
         showTypingIndicator(false);
         setSendButtonState(true);
         input.focus(); // Return focus to input for better UX
+
+        // Reset the flag to allow sending another message
+        isMessageBeingProcessed = false;
     }
 }
 
