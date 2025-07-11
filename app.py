@@ -16,7 +16,7 @@ CORS(app)  # Allow frontend to talk to backend
 # STUDENT CUSTOMIZATION SECTION 1: API SETUP
 # =============================================================================
 # STEP 1: Replace with your Google API key
-GOOGLE_API_KEY = "AIzaSyBMLQhp0y2DJ3g5m-wiUIJdwucOOVQGlqA"
+GOOGLE_API_KEY = "api-key"
 
 # Configure Gemini AI
 genai.configure(api_key=GOOGLE_API_KEY)
