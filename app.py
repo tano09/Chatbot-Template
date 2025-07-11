@@ -29,17 +29,20 @@ model = genai.GenerativeModel('gemini-1.5-flash')
 # Replace all the example values below with your own business details
 
 BUSINESS_INFO = {
-    "business_name": "Your Business Name Here",
-    "business_type": "Type of business (e.g., restaurant, bookstore, tech repair)",
+    "business_name": "Paws & Shine Dog Grooming",
+    "business_type": "Dog grooming service",
+    "phone": "(555) 123-PAWS",
+    "email": "info@pawsandshine.com",
+    "address": "123 Dog Street, Pet City, PC 12345",
     "products_services": [
-        "Product or service 1",
-        "Product or service 2",
-        "Product or service 3",
-        "Product or service 4",
-        "Product or service 5"
+        "Basic grooming package",
+        "Deluxe grooming package",
+        "Nail trimming",
+        "Ear cleaning",
+        "Teeth brushing"
     ],
-    "target_customers": "Who are your ideal customers? (e.g., college students, families, gamers)",
-    "business_personality": "How should your business sound? (e.g., professional and helpful, fun and energetic, calm and trustworthy)"
+    "target_customers": "Dog owners who want their pets to look and feel their best, but can also work with cats",
+    "business_personality": "Friendly, caring, and professional with a touch of fun"
 }
 
 # =============================================================================
@@ -49,15 +52,7 @@ BUSINESS_INFO = {
 
 def create_system_prompt():
     """
-    Students: This is where you customize your chatbot's personality and behavior!
-
-    INSTRUCTIONS:
-    1. Keep the basic structure below - it works well for most businesses
-    2. Add 3-5 specific rules for YOUR business in the "CUSTOM BUSINESS RULES" section
-    3. Choose 2-3 emojis that represent your business theme
-    4. Write 1-2 sentences about what makes your business special
-
-    Think: How would you want a real employee to talk to your customers?
+    Customizes the chatbot's personality and behavior for a dog grooming business.
     """
 
     prompt = f"""
@@ -69,37 +64,33 @@ BUSINESS OVERVIEW:
 - Target Customers: {BUSINESS_INFO['target_customers']}
 - Personality: {BUSINESS_INFO['business_personality']}
 
-YOUR CHATBOT'S MAIN JOBS - STUDENTS: Customize this list for your specific chatbot purpose!
-1. [What should your chatbot do first when someone talks to it?]
-2. [What's the second most important thing it should do?]
-3. [What's the third most important thing it should do?]
-4. [Add more job responsibilities specific to your business - aim for 5-7 total]
-5. [Think: Is this a sales bot? Support bot? Information bot? Schedule bot?]
+YOUR CHATBOT'S MAIN JOBS:
+1. Greet customers warmly and ask how you can assist them.
+2. Provide detailed information about grooming packages and services.
+3. Answer questions about pricing, appointment scheduling, and pet care tips.
+4. Promote special offers or discounts for loyal customers.
+5. Ensure customers feel confident and excited about bringing their pets to {BUSINESS_INFO['business_name']}.
 
-CONVERSATION RULES - STUDENTS: Replace these with rules that fit YOUR chatbot's purpose!
-- [Write your first conversation rule - how should it behave?]
-- [Write your second conversation rule - what topics should it focus on?]
-- [Write your third conversation rule - how should it handle questions?]
-- [Write your fourth conversation rule - any special behaviors?]
-- [Add more rules as needed - keep it to 4-6 total rules]
+CONVERSATION RULES:
+- Always be friendly and empathetic, as if you're talking to a fellow dog lover.
+- Focus on dog grooming topics and avoid unrelated subjects.
+- Provide clear and concise answers to questions.
+- Use emojis like 🐾, 🐶, and ✂️ to make responses more engaging.
+- Offer helpful tips for dog care when appropriate.
 
-RESPONSE STYLE - STUDENTS: Define how your chatbot should "sound" when it talks!
-- [How formal or casual should your chatbot be?]
-- [What kind of language should it use? (simple, technical, fun, professional?)]
-- [Should it use emojis? If so, which ones fit your business?]
-- [How long should responses be? (short and quick, detailed explanations?)]
-- [Any other style preferences for your specific business?]
+RESPONSE STYLE:
+- Casual and approachable, but professional.
+- Use simple language that is easy for all customers to understand.
+- Include emojis to add a playful tone (e.g., 🐾, 🐶, ✂️).
+- Keep responses concise but informative.
 
-CUSTOM BUSINESS RULES - STUDENTS: Replace these with rules specific to YOUR business!
-- [Write your first custom rule here - what should your chatbot always do?]
-- [Write your second custom rule here - any special offers or policies?]
-- [Write your third custom rule here - any important business information?]
-- [Add more rules if needed!]
+CUSTOM BUSINESS RULES:
+- Always highlight the importance of regular grooming for a dog's health and happiness.
+- Mention any seasonal promotions or discounts.
+- Provide reassurance about the safety and comfort of pets during grooming sessions.
 
 WHAT MAKES YOUR BUSINESS SPECIAL:
-[Students: Write 1-2 sentences about what makes your business unique and exciting]
-
-Remember: You represent {BUSINESS_INFO['business_name']} - make customers excited about your business!
+At {BUSINESS_INFO['business_name']}, we treat every dog like family. Our experienced groomers ensure your furry friends look and feel their best, all while enjoying a stress-free grooming experience. 🐾
 """
     return prompt
 
@@ -172,6 +163,18 @@ def reset_chat():
 
     return jsonify({'message': 'Chat reset successfully'})
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/services')
+def services():
+    return render_template('services.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
 # =============================================================================
 # STUDENT CUSTOMIZATION SECTION 4: ADDITIONAL FEATURES (OPTIONAL)
 # =============================================================================
@@ -179,39 +182,44 @@ def reset_chat():
 @app.route('/api/products', methods=['GET'])
 def get_products():
     """
-    Students: Customize this endpoint to return YOUR product information
-    Your frontend can use this to display a product catalog
-
-    INSTRUCTIONS:
-    1. Replace the example products below with your actual products/services
-    2. Add more products if needed
-    3. Include real prices, descriptions, and images/emojis
-    4. Consider adding categories, ratings, or availability status
+    Returns product information for the dog grooming business.
     """
-    # Example product data - STUDENTS: Replace with your products!
     products = [
         {
             "id": 1,
-            "name": "Your Product Name 1",
-            "price": "$XX.XX",
-            "description": "Brief description of your first product or service",
-            "image": "🎯"  # Choose an emoji that represents your product
+            "name": "Basic Grooming Package",
+            "price": "$25.00",
+            "description": "Includes a bath, brushing, and nail trimming for your pup.",
+            "image": "🛁"  # Represents grooming services
         },
         {
             "id": 2,
-            "name": "Your Product Name 2",
-            "price": "$XX.XX",
-            "description": "Brief description of your second product or service",
-            "image": "⭐"  # Choose an emoji that represents your product
+            "name": "Deluxe Grooming Package",
+            "price": "$50.00",
+            "description": "Includes a bath, brushing, nail trimming, ear cleaning, and teeth brushing.",
+            "image": "✨"  # Represents deluxe services
         },
         {
             "id": 3,
-            "name": "Your Product Name 3",
-            "price": "$XX.XX",
-            "description": "Brief description of your third product or service",
-            "image": "🚀"  # Choose an emoji that represents your product
+            "name": "Nail Trimming",
+            "price": "$10.00",
+            "description": "Professional nail trimming to keep your dog's paws healthy.",
+            "image": "✂️"  # Represents nail trimming
+        },
+        {
+            "id": 4,
+            "name": "Ear Cleaning",
+            "price": "$15.00",
+            "description": "Gentle ear cleaning to prevent infections and discomfort.",
+            "image": "👂"  # Represents ear cleaning
+        },
+        {
+            "id": 5,
+            "name": "Teeth Brushing",
+            "price": "$20.00",
+            "description": "Keep your dog's teeth clean and healthy with our brushing service.",
+            "image": "🦷"  # Represents teeth brushing
         }
-        # Add more products here as needed!
     ]
     return jsonify(products)
 
@@ -233,43 +241,43 @@ BEFORE RUNNING YOUR CHATBOT, COMPLETE THESE STEPS:
    - Define your target customers
    - Describe your business personality
 
-✅ STEP 3: Customize Your Chatbot Personality
+✅ STEP 3: Customize Your Chatbot PersonalityPersonality
    - Modify the create_system_prompt() function
-   - Add special instructions for your business
+   - Add special instructions for your businessness
    - Choose appropriate emojis for your business theme
 
-✅ STEP 4: Update Your Products (Optional)
+✅ STEP 4: Update Your Products (Optional)al)
    - Customize the get_products() function
-   - Add your real products with prices and descriptions
+   - Add your real products with prices and descriptionsions
 
 ✅ STEP 5: Test Your Chatbot
    - Run this file: python app.py
-   - Open your browser to http://localhost:5001
+   - Open your browser to http://localhost:5001   - Open your browser to http://localhost:5001
    - Test conversations with your chatbot
-   - Make sure it stays on topic and represents your business well
+   - Make sure it stays on topic and represents your business well your business well
 
 BUSINESS IDEAS FOR INSPIRATION:
-- Local coffee shop or bakery
+- Local coffee shop or bakery- Local coffee shop or bakery
 - Video game store
 - Fitness/yoga studio
 - Tutoring service
-- Food truck
+- Food truck- Food truck
 - Bookstore
 - Hair salon
 - Tech repair shop
 - Handmade jewelry store
 - Pet grooming service
-- Photography studio
+- Photography studio- Photography studio
 - Music lessons
 - Bike repair shop
-- Home cleaning service
+- Home cleaning servicervice
 - Personal training
 - Art supply store
 """
 
-# =============================================================================
+# ================================================================================================================================================
 # RUN THE SERVER
-# =============================================================================
+# ====================================================================================================================================
 
 if __name__ == '__main__':
     print("=" * 60)

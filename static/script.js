@@ -6,16 +6,16 @@
 let businessInfo = {};
 const userId = 'user_' + Math.random().toString(36).substr(2, 9); // Simple user ID
 
-// Students: Customize these messages for your business
+// Dog-themed welcome messages
 const welcomeMessages = [
-    "Welcome! How can I help you today?",
-    "Add your own messages!",
+    "🐾 Welcome to our dog-friendly chatbot! How can I assist you today?",
+    "🐶 Woof woof! Need help with anything?",
 ];
 
-// Students: Customize loading messages
+// Dog-themed loading messages
 const loadingMessages = [
-    "Let me think about that...",
-    "Add your own messages!",
+    "🐕 Thinking about your question...",
+    "🐾 Fetching the best answer for you!",
 ];
 
 // =================================================================
@@ -42,40 +42,23 @@ async function loadBusinessInfo() {
         businessInfo = await response.json();
 
         // Update page with business info
-        document.getElementById('businessName').textContent = businessInfo.business_name;
-        document.getElementById('businessDescription').textContent = businessInfo.business_type;
+        document.getElementById('businessName').textContent = businessInfo.business_name || "Doggy Chatbot";
+        document.getElementById('businessDescription').textContent = businessInfo.business_type || "Dog-related services";
 
-        // Students: Customize the logo emoji based on business type
-        const logoEmojis = {
-            'pet': '🐦',
-            'food': '🍕',
-            'Add your own!': 'Emoji goes here!',
-            'default': '🏪'
-        };
-
-        // Auto-detect emoji based on business type
-        let logoEmoji = logoEmojis.default;
-        const businessType = businessInfo.business_type.toLowerCase();
-
-        for (const [key, emoji] of Object.entries(logoEmojis)) {
-            if (businessType.includes(key)) {
-                logoEmoji = emoji;
-                break;
-            }
-        }
-
+        // Dog-themed logo emoji
+        const logoEmoji = "🐾";
         document.getElementById('businessLogo').textContent = logoEmoji;
 
         // Update page title
-        document.title = `${businessInfo.business_name} - AI Assistant`;
+        document.title = `${businessInfo.business_name || "Doggy Chatbot"} - AI Assistant`;
 
         console.log("✅ Business information loaded successfully!");
 
     } catch (error) {
         console.error('❌ Error loading business info:', error);
         // Fallback if API fails
-        document.getElementById('businessName').textContent = 'Your Business Chatbot';
-        document.getElementById('businessDescription').textContent = 'AI-powered customer service';
+        document.getElementById('businessName').textContent = 'Doggy Chatbot';
+        document.getElementById('businessDescription').textContent = 'AI-powered dog services';
     }
 }
 
@@ -341,12 +324,12 @@ function showBusinessHours() {
     addMessage('bot', hoursText);
 }
 
-// Example: Function to show product catalog
+// Example: Function to show dog-themed product catalog
 function showProductCatalog() {
-    // Students: Customize this for your business
     const products = [
-        "🐦 Colorful Parakeets - $25",
-        "🏠 Add your own! - $Fill in!",
+        "🐕 Premium Dog Food - $20",
+        "🦴 Chew Toys - $10",
+        "🐾 Dog Training Sessions - $50",
     ];
 
     let catalogText = "Here are our featured products:\n\n";

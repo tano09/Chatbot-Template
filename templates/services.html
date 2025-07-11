@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Paws & Shine Dog Grooming</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="header">
+        <h1>Our Services</h1>
+        <p>Explore the grooming services we offer!</p>
+    </div>
+    <div class="container">
+        <div class="content">
+            <h2>Our Services</h2>
+            <ul class="service-list">
+                <li>
+                    <img src="{{ url_for('static', filename='images/basic-grooming.jpg') }}" alt="Basic Grooming" class="service-image">
+                    Basic Grooming Package
+                </li>
+                <li>
+                    <img src="{{ url_for('static', filename='images/deluxe-grooming.jpg') }}" alt="Deluxe Grooming" class="service-image">
+                    Deluxe Grooming Package
+                </li>
+                <li>
+                    <img src="{{ url_for('static', filename='images/nail-trimming.jpg') }}" alt="Nail Trimming" class="service-image">
+                    Nail Trimming
+                </li>
+                <li>
+                    <img src="{{ url_for('static', filename='images/ear-cleaning.jpg') }}" alt="Ear Cleaning" class="service-image">
+                    Ear Cleaning
+                </li>
+                <li>
+                    <img src="{{ url_for('static', filename='images/teeth-brushing.jpg') }}" alt="Teeth Brushing" class="service-image">
+                    Teeth Brushing
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="navigation">
+        <a href="{{ url_for('home') }}" class="nav-link">Back to Chat</a>
+    </div>
+</body>
+</html>

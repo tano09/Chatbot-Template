@@ -3,22 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Specialized Business Chatbot</title>
+    <title>Paws & Shine Dog Grooming Chatbot</title>
 
     <!-- Link to external CSS file -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <!--
-    STUDENT CUSTOMIZATION SECTION: PAGE STRUCTURE
-    Students: Modify the header and layout to match your business!
+    DOG-THEMED PAGE STRUCTURE
     -->
 
     <div class="header">
-        <!-- Students: Change this emoji and text for your business! -->
-        <div class="business-logo" id="businessLogo">🐦</div>
-        <h1 id="businessName">Loading...</h1>
-        <p id="businessDescription">Your AI-powered business assistant</p>
+        <!-- Dog-themed logo and text -->
+        <div class="business-logo" id="businessLogo"></div>
+        <h1 id="businessName">Paws & Shine Dog Grooming</h1>
+        <p id="businessDescription">Your AI-powered assistant for happy, healthy pups!</p>
+    </div>
+
+    <div class="navigation">
+        <a href="{{ url_for('about') }}" class="nav-link">About Us</a>
+        <a href="{{ url_for('services') }}" class="nav-link">Services</a>
+        <a href="{{ url_for('contact') }}" class="nav-link">Contact</a>
     </div>
 
     <div class="container">
@@ -28,21 +33,20 @@
             </div>
 
             <!--
-            STUDENT CUSTOMIZATION: QUICK RESPONSE BUTTONS
-            Students: Add buttons for common questions customers might ask
+            DOG-THEMED QUICK RESPONSE BUTTONS
             -->
             <div class="quick-buttons">
-                <button class="quick-button" onclick="sendQuickMessage('What products do you have?')">
-                    Products 🛍️
+                <button class="quick-button" onclick="sendQuickMessage('What grooming packages do you offer?')">
+                    Grooming Packages
                 </button>
                 <button class="quick-button" onclick="sendQuickMessage('What are your prices?')">
-                    Pricing 💰
+                    Pricing
                 </button>
-                <button class="quick-button" onclick="sendQuickMessage('How can I contact you?')">
-                    Contact 📞
+                <button class="quick-button" onclick="sendQuickMessage('How can I book an appointment?')">
+                    Book Appointment
                 </button>
                 <button class="quick-button" onclick="sendQuickMessage('Tell me about your business')">
-                    About Us ℹ️
+                    About Us
                 </button>
             </div>
 
@@ -57,10 +61,10 @@
                     <input
                         type="text"
                         id="messageInput"
-                        placeholder="Type your message here..."
+                        placeholder="Ask about grooming, pricing, or tips for your pup!"
                         maxlength="500"
                     >
-                    <button id="sendButton" onclick="sendMessage()">Send 🚀</button>
+                    <button id="sendButton" onclick="sendMessage()">Send</button>
                 </div>
             </div>
         </div>

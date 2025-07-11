@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Paws & Shine Dog Grooming</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="header">
+        <h1>About Us</h1>
+        <p>Learn more about Paws & Shine Dog Grooming!</p>
+    </div>
+    <div class="container">
+        <div class="content">
+            <h2>Who We Are</h2>
+            <img src="{{ url_for('static', filename='images/about-us.jpg') }}" alt="About Us" class="responsive-image">
+            <p>Paws & Shine Dog Grooming is dedicated to providing top-notch grooming services for your furry friends.</p>
+            <h2>Our Mission</h2>
+            <p>We aim to make grooming a stress-free and enjoyable experience for both pets and their owners.</p>
+        </div>
+    </div>
+    <div class="navigation">
+        <a href="{{ url_for('home') }}" class="nav-link">Back to Chat</a>
+    </div>
+</body>
+</html>

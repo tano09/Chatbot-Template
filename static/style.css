@@ -4,7 +4,7 @@
    ================================================================= */
 :root {
     /* Students: Change these colors to match your business theme! */
-    --primary-color: #4CAF50;      /* Main brand color */
+    --primary-color: #45a049;      /* Main brand color */
     --secondary-color: #45a049;    /* Darker shade for hover effects */
     --accent-color: #FFC107;       /* Accent color for highlights */
     --background-color: #f0f8ff;   /* Page background */
@@ -12,6 +12,20 @@
     --user-msg-bg: #4CAF50;        /* User message background */
     --bot-msg-bg: #e3f2fd;         /* Bot message background */
     --text-color: #333333;         /* Main text color */
+}
+
+/* =================================================================
+   DOG-THEMED COLORS & STYLES
+   ================================================================= */
+:root {
+    --primary-color: #6b4226;      /* Brown for dog theme */
+    --secondary-color: #8b5a2b;    /* Darker brown for hover effects */
+    --accent-color: #FFD700;       /* Golden for highlights */
+    --background-color: #fef5e7;   /* Light beige for background */
+    --chat-bg: #ffffff;            /* Chat area background */
+    --user-msg-bg: #d2b48c;        /* User message background (tan) */
+    --bot-msg-bg: #f5deb3;         /* Bot message background (wheat) */
+    --text-color: #4b3621;         /* Dark brown for text */
 }
 
 /* =================================================================
@@ -172,23 +186,32 @@ body {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
-    background: #f0f0f0;
+    background: #fef5e7; /* Light beige for dog theme */
 }
 
 .quick-button {
-    background: var(--accent-color);
-    color: #333;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 20px;
+    background: var(--accent-color); /* Golden for highlights */
+    color: var(--text-color); /* Dark brown text */
+    border: 2px solid var(--primary-color); /* Brown border */
+    padding: 10px 20px;
+    border-radius: 25px; /* Rounded buttons for a friendly look */
     cursor: pointer;
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: bold;
     transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
 }
 
 .quick-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    background: var(--secondary-color); /* Darker brown for hover effect */
+    color: white; /* White text on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+.quick-button:active {
+    transform: translateY(0); /* Reset lift effect on click */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
 
 /* =================================================================
@@ -284,6 +307,41 @@ body {
 }
 
 /* =================================================================
+   NAVIGATION LINKS - Styling for better appearance
+   ================================================================= */
+.navigation {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    background-color: var(--background-color); /* Matches the page theme */
+    padding: 15px 0;
+    border-bottom: 2px solid var(--primary-color); /* Adds a subtle border */
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--primary-color); /* Brown for dog theme */
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 2px solid var(--primary-color); /* Adds a border around links */
+    border-radius: 25px; /* Rounded corners for a friendly look */
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: var(--primary-color); /* Brown background on hover */
+    color: white; /* White text on hover */
+    transform: scale(1.05); /* Slight zoom effect */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adds a shadow for depth */
+}
+
+.nav-link:active {
+    transform: scale(1); /* Reset zoom effect on click */
+    box-shadow: none; /* Removes shadow */
+}
+
+/* =================================================================
    STUDENT CUSTOMIZATION SECTION 2: ADD YOUR OWN STYLES HERE!
    Students: Add custom CSS classes for your business features
    ================================================================= */
@@ -310,6 +368,66 @@ body {
     border-radius: 5px;
     margin: 10px 0;
     font-weight: bold;
+}
+
+/* =================================================================
+   PAGE CONTENT STYLING
+   ================================================================= */
+.content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: center;
+}
+
+.content h2 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.content p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.service-list {
+    list-style: none;
+    padding: 0;
+}
+
+.service-list li {
+    background: var(--accent-color);
+    color: var(--text-color);
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* =================================================================
+   IMAGE STYLES
+   ================================================================= */
+.responsive-image {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    display: block;
+}
+
+.service-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
 }
 
 /* =================================================================

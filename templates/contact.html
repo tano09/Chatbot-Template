@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Paws & Shine Dog Grooming</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="header">
+        <h1>Contact Us</h1>
+        <p>Get in touch with Paws & Shine Dog Grooming!</p>
+    </div>
+    <div class="container">
+        <div class="content">
+            <h2>Contact Us</h2>
+            <img src="{{ url_for('static', filename='images/contact.jpg') }}" alt="Contact Us" class="responsive-image">
+            <p>Email: info@pawsandshine.com</p>
+            <p>Phone: (123) 456-7890</p>
+        </div>
+    </div>
+    <div class="navigation">
+        <a href="{{ url_for('home') }}" class="nav-link">Back to Chat</a>
+    </div>
+</body>
+</html>
